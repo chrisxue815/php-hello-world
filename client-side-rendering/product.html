@@ -1,13 +1,13 @@
 <div>
 <form onsubmit="getProduct(); return false;">
-Order number: <input type="text" id="orderNumber" name="orderNumber" /><br/>
-<button type="submit" id="submit">Submit</button><br/>
+Order number: <input type="text" id="orderNumber" /><br/>
+<button type="submit">Submit</button><br/>
 </form>
 </div>
 
 <div>
-Product code: <input type="text" id="productCode" readonly />
-Product line: <input type="text" id="productLine" readonly />
+Product code: <input type="text" id="productCode" disabled />
+Product line: <input type="text" id="productLine" disabled />
 </div>
 
 <script>
@@ -25,7 +25,5 @@ async function getProduct() {
 
     document.querySelector('#productCode').value = product.productCode;
     document.querySelector('#productLine').value = product.productLine;
-
-    return false;
 }
 </script>
