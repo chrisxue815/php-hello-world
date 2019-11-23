@@ -1,0 +1,31 @@
+<div>
+<form onsubmit="getProduct(); return false;">
+Order number: <input type="text" id="orderNumber" name="orderNumber" /><br/>
+<button type="submit" id="submit">Submit</button><br/>
+</form>
+</div>
+
+<div>
+Product code: <input type="text" id="productCode" readonly />
+Product line: <input type="text" id="productLine" readonly />
+</div>
+
+<script>
+async function getProduct() {
+    let request = {
+        orderNumber: parseInt(document.querySelector('#orderNumber').value),
+    };
+
+    let response = await fetch('getProduct.php', {
+        method: 'POST',
+        body: JSON.stringify(request),
+    });
+
+    let product = await response.json();
+
+    document.querySelector('#productCode').value = product.productCode;
+    document.querySelector('#productLine').value = product.productLine;
+
+    return false;
+}
+</script>
